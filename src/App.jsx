@@ -387,7 +387,7 @@ function Dashboard({ sessions, measurements, settings, onNavigate, onOpenSetting
   return (
     <div style={{ padding: "0 0 16px" }}>
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 16px 12px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 16px 12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Logo size={44} />
           <div>
@@ -580,7 +580,7 @@ function WorkoutScreen({ sessions, onSaveSession, initialDay }) {
 
   return (
     <div style={{ padding: "0 0 20px" }}>
-      <div style={{ padding: "20px 16px 12px" }}>
+      <div style={{ padding: "12px 16px 12px" }}>
         <div style={{ fontSize: 24, fontWeight: 900, color: C.textPrimary }}>Workout</div>
       </div>
 
@@ -823,7 +823,7 @@ function ProgressScreen({ sessions, measurements, settings }) {
 
   return (
     <div style={{ padding: "0 0 20px" }}>
-      <div style={{ padding: "20px 16px 8px" }}>
+      <div style={{ padding: "12px 16px 8px" }}>
         <div style={{ fontSize: 24, fontWeight: 900, color: C.textPrimary }}>Progress</div>
         <div style={{ fontSize: 12, color: C.textMuted }}>
           {totalSessions} sessions · {totalWeeks} weeks · {avgPerWeek} avg/week
@@ -979,7 +979,7 @@ function MeasurementsScreen({ measurements, onSaveMeasurement }) {
 
   return (
     <div style={{ padding: "0 0 20px" }}>
-      <div style={{ padding: "20px 16px 8px" }}>
+      <div style={{ padding: "12px 16px 8px" }}>
         <div style={{ fontSize: 24, fontWeight: 900, color: C.textPrimary }}>Measurements</div>
         <div style={{ fontSize: 12, color: C.textMuted }}>Log weekly for best results</div>
       </div>
@@ -1122,7 +1122,7 @@ function GuideScreen() {
 
   return (
     <div style={{ padding: "0 0 20px" }}>
-      <div style={{ padding: "20px 16px 8px" }}>
+      <div style={{ padding: "12px 16px 8px" }}>
         <div style={{ fontSize: 24, fontWeight: 900, color: C.textPrimary }}>Exercise Guide</div>
         <div style={{ fontSize: 12, color: C.textMuted }}>27 exercises · tap to expand · YouTube links included</div>
       </div>
@@ -1235,8 +1235,8 @@ function SettingsOverlay({ settings, sessions, measurements, onSave, onClose }) 
   function setF(k, v) { setForm(p => ({ ...p, [k]: v })); }
 
   return (
-    <div style={{ position: "fixed", inset: 0, background: C.bg, zIndex: 200, overflow: "auto", padding: "0 0 60px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 16px 12px" }}>
+    <div style={{ position: "fixed", inset: 0, background: C.bg, zIndex: 200, overflow: "auto", padding: "env(safe-area-inset-top, 0px) 0 60px", boxSizing: "border-box" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 16px 12px" }}>
         <div style={{ fontSize: 22, fontWeight: 900, color: C.textPrimary }}>Settings</div>
         <button onClick={() => { onSave(form); onClose(); }}
           style={{ background: C.accent, color: "#0F1117", border: "none", borderRadius: 10, padding: "9px 18px", fontWeight: 800, cursor: "pointer", fontSize: 14 }}>
@@ -1401,7 +1401,11 @@ function Onboarding({ onDone }) {
   const isLast = step === steps.length - 1;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh", background: C.bg, padding: "0 24px", justifyContent: "center", maxWidth: 430, margin: "0 auto" }}>
+    <div style={{
+      display: "flex", flexDirection: "column", height: "100vh",
+      background: C.bg, padding: "env(safe-area-inset-top, 24px) 24px env(safe-area-inset-bottom, 24px)",
+      justifyContent: "center", maxWidth: 430, margin: "0 auto", boxSizing: "border-box",
+    }}>
       <div style={{ textAlign: "center", marginBottom: 24 }}>
         {s.icon === "logo"
           ? <div style={{ display: "flex", justifyContent: "center" }}><Logo size={110} /></div>
@@ -1472,6 +1476,8 @@ export default function FitTrack56() {
       display: "flex", flexDirection: "column", height: "100vh",
       background: C.bg, fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       color: C.textPrimary, maxWidth: 430, margin: "0 auto", position: "relative",
+      paddingTop: "env(safe-area-inset-top, 0px)",
+      boxSizing: "border-box",
     }}>
       {/* Main content */}
       <div style={{ flex: 1, overflow: "auto", minHeight: 0 }}>
